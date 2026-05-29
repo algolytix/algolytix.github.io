@@ -218,6 +218,50 @@
   }
   .hero-cta svg { width: 18px; height: 18px; }
 
+  .nav-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: transparent;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  .nav-login:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .hero-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    background: transparent;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-left: 16px;
+    animation: fadeInUp 0.8s ease 0.4s both;
+  }
+  .hero-login:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 40px var(--accent-glow);
+  }
+
   /* Section styles */
   .section-label {
     font-family: 'JetBrains Mono', monospace;
@@ -487,7 +531,10 @@
           <span class="white">ALGOLYT</span><span class="cyan">\X</span>
         </div>
       </div>
-      <a href="mailto:dharmesh.rathod@algolytix.us">dharmesh.rathod@algolytix.us</a>
+      <div style="display:flex;align-items:center;gap:20px">
+        <a href="mailto:dharmesh.rathod@algolytix.us">dharmesh.rathod@algolytix.us</a>
+        <a href="https://app.algolytix.us" class="nav-login">🦅 Falcon Desk</a>
+      </div>
     </nav>
 
     <section class="hero">
@@ -505,6 +552,9 @@
       <a href="mailto:dharmesh.rathod@algolytix.us" class="hero-cta">
         Get in Touch
         <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://app.algolytix.us" class="hero-login">
+        🦅 Login to Falcon Desk
       </a>
     </section>
 
