@@ -66,7 +66,7 @@
 
   /* Nav */
   nav {
-    padding: 28px 0;
+    padding: 18px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -138,7 +138,7 @@
 
   /* Hero */
   .hero {
-    padding: 120px 0 100px;
+    padding: 30px 0 28px;
     text-align: center;
   }
 
@@ -153,7 +153,7 @@
     font-size: 12px;
     color: var(--accent);
     background: var(--accent-dim);
-    margin-bottom: 40px;
+    margin-bottom: 22px;
     letter-spacing: 0.5px;
     animation: fadeInDown 0.8s ease;
   }
@@ -166,7 +166,7 @@
   }
 
   .hero-logo {
-    font-size: clamp(48px, 7vw, 80px);
+    font-size: clamp(36px, 5vw, 54px);
     font-weight: 700;
     letter-spacing: 4px;
     margin-bottom: 12px;
@@ -180,7 +180,7 @@
     font-size: 14px;
     color: var(--text-dim);
     letter-spacing: 2.5px;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
     animation: fadeInUp 0.8s ease 0.1s both;
   }
 
@@ -190,10 +190,10 @@
   }
 
   .hero-sub {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--text-dim);
-    max-width: 580px;
-    margin: 0 auto 48px;
+    max-width: 760px;
+    margin: 0 auto;
     line-height: 1.7;
     animation: fadeInUp 0.8s ease 0.2s both;
   }
@@ -514,7 +514,24 @@
     .hero-logo { letter-spacing: 2px; }
   }
 
-  .feature { padding: 40px 0 80px; }
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 8px 0 72px; }
+  .duo .feature-card { padding: 28px 32px; display: flex; flex-direction: column; }
+  .duo .feature-card.amber { border-color: var(--orange); box-shadow: 0 0 40px rgba(245,158,11,0.08); }
+  .duo .feature-card.amber::before { background: linear-gradient(90deg, var(--orange), var(--accent)); }
+  .duo .kicker { margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
+  .duo .amber .kicker { color: var(--orange); }
+  .duo h2 { font-size: 30px; }
+  .duo .feature-lead { font-size: 15px; margin-bottom: 14px; }
+  .duo ul { list-style: none; margin-bottom: 20px; flex: 1; }
+  .duo li { font-size: 14px; color: var(--text-dim); line-height: 1.6; padding-left: 20px; position: relative; margin-bottom: 6px; }
+  .duo li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+  .duo .amber li::before { background: var(--orange); }
+  .card-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.3s; }
+  .card-btn.cyan { background: var(--accent); color: var(--bg); box-shadow: 0 0 24px var(--accent-glow); }
+  .card-btn.amber { border: 2px solid var(--orange); color: var(--orange); }
+  .card-btn.amber:hover { background: var(--orange); color: var(--bg); }
+  .card-btn:hover { transform: translateY(-2px); }
+  .pill.cyan { background: var(--accent-dim); color: var(--accent); border-color: rgba(34,211,238,0.35); }
   .feature-card { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; padding: 48px; position: relative; overflow: hidden; box-shadow: 0 0 40px rgba(34,211,238,0.08); }
   .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--orange)); }
   .feature-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -524,7 +541,7 @@
   .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature-item h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
   .feature-item p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-  .capabilities .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .capabilities .cap-grid { grid-template-columns: repeat(3, 1fr); }
   .founder { padding: 80px 0; }
   .founder-card { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
   .founder-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
@@ -533,7 +550,7 @@
   .footer-links a { color: var(--text-dim); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-left: 18px; }
   .footer-links a:hover { color: var(--accent); }
   @media (max-width: 768px) {
-    .feature-grid, .founder-card, .capabilities .cap-grid { grid-template-columns: 1fr; }
+    .feature-grid, .founder-card, .capabilities .cap-grid, .duo { grid-template-columns: 1fr; }
     .feature-card { padding: 32px 24px; }
     nav .nav-email { display: none; }
     .container { padding: 0 16px; }
@@ -558,32 +575,34 @@
       <div class="hero-badge"><span class="dot"></span>Applied AI &middot; Wisconsin, USA</div>
       <div class="hero-logo"><span class="white">ALGOLYT</span><span class="cyan">\X</span></div>
       <div class="hero-tagline">HEALTHCARE AI <span class="amber-dot">&#9679;</span> ENTERPRISE AI <span class="amber-dot">&#9679;</span> FORECASTING</div>
-      <p class="hero-sub">We build production AI and forecasting systems that help organizations see problems coming and act early, starting with the nurse staffing crisis in long-term care.</p>
-      <a href="mailto:dharmesh.rathod@algolytix.us" class="hero-cta">
-        Get in Touch
-        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <p class="hero-sub">Production AI and forecasting systems that help organizations see problems coming and act early.</p>
     </section>
 
-    <section class="feature">
-      <div class="section-label">// Featured project</div>
+    <section class="duo">
       <div class="feature-card">
-        <div class="feature-head"><h2>Nurselytix</h2><span class="pill">IN DEVELOPMENT</span></div>
-        <p class="feature-lead">Early warning of nurse staffing shortfalls for nursing homes. Nurselytix forecasts where and when a facility will run short, weeks ahead, so administrators can cover gaps with their own staff instead of last-minute agency nurses.</p>
-        <div class="feature-grid">
-          <div class="feature-item">
-            <h4>The problem</h4>
-            <p>Staffing gaps are usually found the night before. Late gaps mean premium agency rates, mandatory overtime, burnout and turnover, and they put resident care and quality ratings at risk.</p>
-          </div>
-          <div class="feature-item">
-            <h4>The approach</h4>
-            <p>Machine learning on public CMS Payroll-Based Journal staffing data for every US nursing home, combined with each facility's own schedules and census, to flag likely shortfalls 1 to 4 weeks out.</p>
-          </div>
-          <div class="feature-item">
-            <h4>Where we are</h4>
-            <p>Baseline models built on Wisconsin nursing home data from 2019 to 2026. We are seeking research and facility partners for a pilot with Wisconsin skilled nursing facilities.</p>
-          </div>
-        </div>
+        <div class="kicker">// HEALTHCARE AI</div>
+        <div class="feature-head"><h2>Nurselytix</h2><span class="pill cyan">IN DEVELOPMENT</span></div>
+        <p class="feature-lead">Early warning of nurse staffing shortfalls for nursing homes, weeks ahead, so administrators cover gaps with their own staff instead of last-minute agency nurses.</p>
+        <ul>
+          <li>Flags where and when a facility will run short, 1 to 4 weeks out</li>
+          <li>Built on CMS staffing data for every US nursing home</li>
+          <li>Baseline models on Wisconsin data, 2019 to 2026</li>
+          <li>Seeking research and facility partners for a Wisconsin pilot</li>
+        </ul>
+        <a href="mailto:dharmesh.rathod@algolytix.us?subject=Nurselytix" class="card-btn cyan">Partner with us
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="feature-card amber">
+        <div class="kicker">// QUANTITATIVE RESEARCH</div>
+        <div class="feature-head"><h2>Falcon Desk</h2><span class="pill">PLATFORM</span></div>
+        <p class="feature-lead">Our quantitative research platform: machine learning on market data, built with the same validation discipline we bring to every model.</p>
+        <ul>
+          <li>Multi-instrument research and signal modeling</li>
+          <li>ML models with rigorous backtesting and risk controls</li>
+          <li>Real-time monitoring and analytics dashboard</li>
+          <li>Access for authorized users</li>
+        </ul>
+        <a href="https://app.algolytix.us" class="card-btn amber">&#x1F985; Login to Falcon Desk</a>
       </div>
     </section>
 
@@ -608,12 +627,6 @@
           <h3>Forecasting &amp; ML Infrastructure</h3>
           <p>End-to-end pipelines from data engineering to deployed models, with time-series forecasting, rigorous backtesting and monitoring in production.</p>
           <div class="cap-tags"><span class="cap-tag">Python</span><span class="cap-tag">LightGBM</span><span class="cap-tag">PyTorch</span><span class="cap-tag">Azure</span></div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon amber">&#x1f4c8;</div>
-          <h3>Quantitative Research</h3>
-          <p>Applied machine learning research on market data, including signal modeling and risk analytics, using the same validation discipline we bring to every model.</p>
-          <div class="cap-tags"><span class="cap-tag">Time Series</span><span class="cap-tag">Risk Models</span></div>
         </div>
       </div>
     </section>
