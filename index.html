@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
+  html { scroll-behavior: smooth; }
   :root {
     --bg: #0a0e17;
     --surface: #111827;
@@ -531,6 +532,9 @@
   .card-btn.amber { border: 2px solid var(--orange); color: var(--orange); }
   .card-btn.amber:hover { background: var(--orange); color: var(--bg); }
   .card-btn:hover { transform: translateY(-2px); }
+  .duo.bottom { padding: 40px 0 72px; }
+  .duo .founder-role { margin: -10px 0 16px; }
+  .amber-role { color: var(--orange) !important; }
   .pill.cyan { background: var(--accent-dim); color: var(--accent); border-color: rgba(34,211,238,0.35); }
   .feature-card { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; padding: 48px; position: relative; overflow: hidden; box-shadow: 0 0 40px rgba(34,211,238,0.08); }
   .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--orange)); }
@@ -578,7 +582,7 @@
       <p class="hero-sub">Production AI and forecasting systems that help organizations see problems coming and act early.</p>
     </section>
 
-    <section class="duo">
+    <section class="duo" id="projects">
       <div class="feature-card">
         <div class="kicker">// HEALTHCARE AI</div>
         <div class="feature-head"><h2>Nurselytix</h2><span class="pill cyan">IN DEVELOPMENT</span></div>
@@ -631,26 +635,33 @@
       </div>
     </section>
 
-    <section class="founder">
-      <div class="section-label">// Founder</div>
-      <div class="founder-card">
-        <div>
-          <div class="founder-name">Dharmesh Rathod</div>
-          <div class="founder-role">FOUNDER, ALGOLYTIX LLC</div>
-        </div>
-        <p>26+ years building enterprise technology and AI systems, with experience at Microsoft, GE Healthcare, Chevron, Kohl's and BNY Mellon. Currently an AI architect leading production AI initiatives. MBA in Finance and Data Analytics (University of Wisconsin), PMP and TOGAF certified.</p>
+    <section class="duo bottom">
+      <div class="feature-card">
+        <div class="kicker">// FOUNDER</div>
+        <h2>Dharmesh Rathod</h2>
+        <div class="founder-role">FOUNDER, ALGOLYTIX LLC</div>
+        <p class="feature-lead">26+ years building enterprise technology and AI systems, with experience at Microsoft, GE Healthcare, Chevron, Kohl's and BNY Mellon.</p>
+        <ul>
+          <li>AI architect leading production AI initiatives</li>
+          <li>MBA in Finance and Data Analytics, University of Wisconsin-Parkside</li>
+          <li>Microsoft Certified Machine Learning expert; PMP and TOGAF certified</li>
+        </ul>
+        <a href="#projects" class="card-btn cyan">View our projects
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
       </div>
-    </section>
-
-    <section class="contact">
-      <div class="contact-box">
-        <div class="section-label">// Let's talk</div>
+      <div class="feature-card amber">
+        <div class="kicker">// LET'S TALK</div>
         <h2>Partner with us</h2>
-        <p>We welcome conversations with care providers, researchers and organizations who want AI that solves a real operational problem.</p>
-        <a href="mailto:dharmesh.rathod@algolytix.us" class="contact-email">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          dharmesh.rathod@algolytix.us
-        </a>
+        <div class="founder-role amber-role">GERMANTOWN, WISCONSIN</div>
+        <p class="feature-lead">We welcome conversations with care providers, researchers and organizations who want AI that solves a real operational problem.</p>
+        <ul>
+          <li>Nursing homes interested in a Nurselytix pilot</li>
+          <li>Research and academic collaborators</li>
+          <li>Enterprise AI and forecasting engagements</li>
+        </ul>
+        <a href="mailto:dharmesh.rathod@algolytix.us" class="card-btn amber">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          dharmesh.rathod@algolytix.us</a>
       </div>
     </section>
 
