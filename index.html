@@ -540,6 +540,9 @@
   .feature-card.slim .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: #a78bfa; margin-bottom: 8px; }
   .pill.violet { background: rgba(139,92,246,0.12); color: #a78bfa; border-color: rgba(139,92,246,0.35); }
   .feature-lead, .feature-card.slim .feature-lead { text-align: justify; text-justify: inter-word; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .card-btn.ghost { border: 2px solid var(--accent); color: var(--accent); }
+  .card-btn.ghost:hover { background: var(--accent-dim); }
   .duo.bottom { padding: 40px 0 72px; }
   .duo .founder-role { margin: -10px 0 16px; }
   .amber-role { color: var(--orange) !important; }
@@ -603,8 +606,11 @@
           <li>Baseline models on Wisconsin data, 2019 to 2026</li>
           <li>Seeking research and facility partners for a Wisconsin pilot</li>
         </ul>
-        <a href="mailto:dharmesh.rathod@algolytix.us?subject=Nurselytix" class="card-btn cyan">Partner with us
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="btn-row">
+          <a href="mailto:dharmesh.rathod@algolytix.us?subject=Nurselytix" class="card-btn cyan">Partner with us
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="nurselytix-concept.html" class="card-btn ghost">See product concept</a>
+        </div>
       </div>
       <div class="feature-card amber">
         <div class="kicker">// QUANTITATIVE RESEARCH</div>
