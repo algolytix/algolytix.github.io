@@ -532,6 +532,14 @@
   .card-btn.amber { border: 2px solid var(--orange); color: var(--orange); }
   .card-btn.amber:hover { background: var(--orange); color: var(--bg); }
   .card-btn:hover { transform: translateY(-2px); }
+  .pipeline { padding: 0 0 64px; margin-top: -48px; }
+  .feature-card.slim { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: center; padding: 28px 32px; border-color: #8b5cf6; box-shadow: 0 0 40px rgba(139,92,246,0.08); }
+  .feature-card.slim::before { background: linear-gradient(90deg, #8b5cf6, var(--accent)); }
+  .feature-card.slim .feature-lead { margin: 0; font-size: 15px; color: var(--text-dim); }
+  .feature-card.slim h2 { font-size: 30px; margin: 0; }
+  .feature-card.slim .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: #a78bfa; margin-bottom: 8px; }
+  .pill.violet { background: rgba(139,92,246,0.12); color: #a78bfa; border-color: rgba(139,92,246,0.35); }
+  .feature-lead, .feature-card.slim .feature-lead { text-align: justify; text-justify: inter-word; }
   .duo.bottom { padding: 40px 0 72px; }
   .duo .founder-role { margin: -10px 0 16px; }
   .amber-role { color: var(--orange) !important; }
@@ -554,7 +562,9 @@
   .footer-links a { color: var(--text-dim); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-left: 18px; }
   .footer-links a:hover { color: var(--accent); }
   @media (max-width: 768px) {
-    .feature-grid, .founder-card, .capabilities .cap-grid, .duo { grid-template-columns: 1fr; }
+    .feature-grid, .founder-card, .capabilities .cap-grid, .duo, .feature-card.slim { grid-template-columns: 1fr; }
+    .feature-card.slim { gap: 14px; }
+    .feature-lead, .feature-card.slim .feature-lead { text-align: left; }
     .feature-card { padding: 32px 24px; }
     nav .nav-email { display: none; }
     .container { padding: 0 16px; }
@@ -607,6 +617,16 @@
           <li>Access for authorized users</li>
         </ul>
         <a href="https://app.algolytix.us" class="card-btn amber">&#x1F985; Login to Falcon Desk</a>
+      </div>
+    </section>
+
+    <section class="pipeline">
+      <div class="feature-card slim">
+        <div class="slim-left">
+          <div class="kicker">// METABOLIC HEALTH AI</div>
+          <div class="feature-head"><h2>Glycodynix</h2><span class="pill violet">RESEARCH STAGE</span></div>
+        </div>
+        <p class="feature-lead">Snap a photo of a meal for an AI estimate of its nutrition, then see how it actually moved your glucose on a continuous glucose monitor, with suggestions for better-balanced choices. Built for people with prediabetes and type 2 diabetes. Wellness and education focus; not a medical device.</p>
       </div>
     </section>
 
