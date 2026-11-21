@@ -1,701 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algolytix | Applied AI for Healthcare and Enterprise</title>
-<meta name="description" content="Algolytix LLC builds production AI and forecasting systems. Featured: Nurselytix, early warning of nurse staffing shortfalls for nursing homes.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algolytix | Engineered Intelligence</title>
+<meta name="description" content="Algolytix builds forecasting tools that give weeks of warning. Featured: Nurselytix, early warning of nurse staffing shortfalls for nursing homes.">
+<meta property="og:title" content="Algolytix | Engineered Intelligence">
+<meta property="og:description" content="Algolytix builds forecasting tools that give weeks of warning. Featured: Nurselytix, early warning of nurse staffing shortfalls for nursing homes.">
+<meta name="theme-color" content="#EEF2F1">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
-<style>
-  html { scroll-behavior: smooth; }
-  :root {
-    --bg: #0a0e17;
-    --surface: #111827;
-    --border: #1e293b;
-    --accent: #22d3ee;
-    --accent-dim: rgba(34, 211, 238, 0.12);
-    --accent-glow: rgba(34, 211, 238, 0.25);
-    --text: #e2e8f0;
-    --text-dim: #94a3b8;
-    --orange: #f59e0b;
-    --orange-dim: rgba(245, 158, 11, 0.12);
-    --teal-deep: #0d9488;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  .grid-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image:
-      linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .glow-orb {
-    position: fixed;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .glow-orb.cyan { background: var(--accent); top: -200px; right: -100px; }
-  .glow-orb.amber { background: var(--orange); bottom: -200px; left: -100px; }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  /* Nav */
-  nav {
-    padding: 18px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .logo-mark {
-    width: 42px; height: 42px;
-    border-radius: 10px;
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .logo-mark-a {
-    font-family: 'Source Serif 4', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--bg);
-    line-height: 1;
-  }
-
-  .logo-mark-slash {
-    font-family: 'Source Serif 4', serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--bg);
-    opacity: 0.5;
-    line-height: 1;
-    margin: 0 -2px;
-  }
-
-  .logo-mark-x {
-    font-family: 'Source Serif 4', serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--bg);
-    opacity: 0.7;
-    line-height: 1;
-  }
-
-  .logo-wordmark {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-  }
-
-  .logo-wordmark .white { color: var(--text); }
-  .logo-wordmark .cyan { color: #00B4FC; }
-
-  nav a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text-dim);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: color 0.3s;
-  }
-  nav a:hover { color: var(--accent); }
-
-  /* Hero */
-  .hero {
-    padding: 30px 0 28px;
-    text-align: center;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    background: var(--accent-dim);
-    margin-bottom: 22px;
-    letter-spacing: 0.5px;
-    animation: fadeInDown 0.8s ease;
-  }
-
-  .hero-badge .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
-  }
-
-  .hero-logo {
-    font-size: clamp(36px, 5vw, 54px);
-    font-weight: 700;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-    animation: fadeInUp 0.8s ease;
-  }
-
-  .hero-logo .white { color: var(--text); }
-  .hero-logo .cyan { color: #00B4FC; }
-
-  .hero-tagline {
-    font-size: 14px;
-    color: var(--text-dim);
-    letter-spacing: 2.5px;
-    margin-bottom: 18px;
-    animation: fadeInUp 0.8s ease 0.1s both;
-  }
-
-  .hero-tagline .amber-dot {
-    color: var(--orange);
-    margin: 0 6px;
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--text-dim);
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.7;
-    animation: fadeInUp 0.8s ease 0.2s both;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 36px;
-    background: var(--accent);
-    color: var(--bg);
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: all 0.3s;
-    box-shadow: 0 0 30px var(--accent-glow);
-    animation: fadeInUp 0.8s ease 0.3s both;
-  }
-  .hero-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 50px var(--accent-glow);
-  }
-  .hero-cta svg { width: 18px; height: 18px; }
-
-  .nav-login {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 22px;
-    background: transparent;
-    color: var(--accent) !important;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.3s;
-  }
-  .nav-login:hover {
-    background: var(--accent);
-    color: var(--bg) !important;
-    box-shadow: 0 0 20px var(--accent-glow);
-  }
-
-  .hero-login {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 36px;
-    background: transparent;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: 10px;
-    border: 2px solid var(--accent);
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .hero-login:hover {
-    background: var(--accent);
-    color: var(--bg);
-    box-shadow: 0 0 40px var(--accent-glow);
-  }
-
-  /* Section styles */
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  h2 {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-  }
-
-  /* Capabilities */
-  .capabilities { padding: 80px 0; }
-
-  .cap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 48px;
-  }
-
-  .cap-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-    transition: all 0.4s;
-    position: relative;
-    overflow: hidden;
-  }
-  .cap-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-  }
-
-  .cap-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .cap-card:hover::before { opacity: 1; }
-
-  .cap-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  .cap-icon.cyan { background: var(--accent-dim); }
-  .cap-icon.amber { background: var(--orange-dim); }
-
-  .cap-card h3 {
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: -0.3px;
-  }
-
-  .cap-card p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .cap-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .cap-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-  }
-
-  /* Stats */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -2px;
-  }
-  .stat-label {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
-
-  /* Approach */
-  .approach { padding: 80px 0; }
-
-  .approach-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 48px;
-  }
-
-  .approach-step {
-    padding: 36px;
-    border: 1px solid var(--border);
-  }
-  .approach-step:first-child { border-radius: 16px 0 0 16px; }
-  .approach-step:last-child { border-radius: 0 16px 16px 0; }
-
-  .step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--border);
-    margin-bottom: 16px;
-    line-height: 1;
-  }
-
-  .approach-step h3 {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-
-  .approach-step p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  /* Contact */
-  .contact {
-    padding: 100px 0;
-    text-align: center;
-  }
-
-  .contact-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 60px 40px;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-box::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--orange), var(--accent));
-  }
-
-  .contact-box h2 { margin-bottom: 16px; }
-
-  .contact-box p {
-    color: var(--text-dim);
-    font-size: 15px;
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-
-  .contact-email {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 14px 28px;
-    border: 1px solid var(--accent);
-    border-radius: 10px;
-    background: var(--accent-dim);
-    transition: all 0.3s;
-  }
-  .contact-email:hover {
-    background: var(--accent);
-    color: var(--bg);
-  }
-
-  /* Footer */
-  footer {
-    padding: 32px 0;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  .footer-loc {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-  }
-
-  /* Animations */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .approach-steps { grid-template-columns: 1fr; }
-    .approach-step { border-radius: 0 !important; }
-    .approach-step:first-child { border-radius: 16px 16px 0 0 !important; }
-    .approach-step:last-child { border-radius: 0 0 16px 16px !important; }
-    .stats { grid-template-columns: 1fr; gap: 32px; }
-    .cap-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-    .hero { padding: 80px 0 60px; }
-    .hero-logo { letter-spacing: 2px; }
-  }
-
-  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 8px 0 72px; }
-  .duo .feature-card { padding: 28px 32px; display: flex; flex-direction: column; }
-  .duo .feature-card.amber { border-color: var(--orange); box-shadow: 0 0 40px rgba(245,158,11,0.08); }
-  .duo .feature-card.amber::before { background: linear-gradient(90deg, var(--orange), var(--accent)); }
-  .duo .kicker { margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
-  .duo .amber .kicker { color: var(--orange); }
-  .duo h2 { font-size: 30px; }
-  .duo .feature-lead { font-size: 15px; margin-bottom: 14px; }
-  .duo ul { list-style: none; margin-bottom: 20px; flex: 1; }
-  .duo li { font-size: 14px; color: var(--text-dim); line-height: 1.6; padding-left: 20px; position: relative; margin-bottom: 6px; }
-  .duo li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
-  .duo .amber li::before { background: var(--orange); }
-  .card-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.3s; }
-  .card-btn.cyan { background: var(--accent); color: var(--bg); box-shadow: 0 0 24px var(--accent-glow); }
-  .card-btn.amber { border: 2px solid var(--orange); color: var(--orange); }
-  .card-btn.amber:hover { background: var(--orange); color: var(--bg); }
-  .card-btn:hover { transform: translateY(-2px); }
-  .pipeline { padding: 0 0 64px; margin-top: -48px; }
-  .feature-card.slim { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: center; padding: 28px 32px; border-color: #8b5cf6; box-shadow: 0 0 40px rgba(139,92,246,0.08); }
-  .feature-card.slim::before { background: linear-gradient(90deg, #8b5cf6, var(--accent)); }
-  .feature-card.slim .feature-lead { margin: 0; font-size: 15px; color: var(--text-dim); }
-  .feature-card.slim h2 { font-size: 30px; margin: 0; }
-  .feature-card.slim .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: #a78bfa; margin-bottom: 8px; }
-  .pill.violet { background: rgba(139,92,246,0.12); color: #a78bfa; border-color: rgba(139,92,246,0.35); }
-  .feature-lead, .feature-card.slim .feature-lead { text-align: justify; text-justify: inter-word; }
-  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .card-btn.ghost { border: 2px solid var(--accent); color: var(--accent); }
-  .card-btn.ghost:hover { background: var(--accent-dim); }
-  .duo.bottom { padding: 40px 0 72px; }
-  .duo .founder-role { margin: -10px 0 16px; }
-  .amber-role { color: var(--orange) !important; }
-  .pill.cyan { background: var(--accent-dim); color: var(--accent); border-color: rgba(34,211,238,0.35); }
-  .feature-card { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; padding: 48px; position: relative; overflow: hidden; box-shadow: 0 0 40px rgba(34,211,238,0.08); }
-  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--orange)); }
-  .feature-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
-  .feature-head h2 { margin: 0; }
-  .pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; padding: 5px 12px; border-radius: 100px; background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(245,158,11,0.35); }
-  .feature-lead { font-size: 17px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 32px; }
-  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .feature-item h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
-  .feature-item p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-  .capabilities .cap-grid { grid-template-columns: repeat(3, 1fr); }
-  .founder { padding: 80px 0; }
-  .founder-card { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
-  .founder-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-  .founder-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 1px; }
-  .founder-card p { font-size: 15px; color: var(--text-dim); line-height: 1.8; }
-  .footer-links a { color: var(--text-dim); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-left: 18px; }
-  .footer-links a:hover { color: var(--accent); }
-  @media (max-width: 768px) {
-    .feature-grid, .founder-card, .capabilities .cap-grid, .duo, .feature-card.slim { grid-template-columns: 1fr; }
-    .feature-card.slim { gap: 14px; }
-    .feature-lead, .feature-card.slim .feature-lead { text-align: left; }
-    .feature-card { padding: 32px 24px; }
-    nav .nav-email { display: none; }
-    .container { padding: 0 16px; }
-  }
-</style>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="glow-orb cyan"></div>
-  <div class="glow-orb amber"></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+<div class="frame">
+<header class="masthead">
+  <a class="brand" href="index.html" aria-label="Algolytix home">
+    <img src="algolytix_falcon.svg" alt="" width="54" height="56">
+    <span class="brand-text"><span class="brand-word">ALGOLYT<span class="bx"><span class="sq">&#305;</span>X</span></span><span class="brand-tag">Engineered Intelligence</span></span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="nurselytix.html">Nurselytix</a>
+    <a href="falcon-desk.html">Falcon Desk</a>
+    <a href="about.html">About</a>
+    <a href="mailto:dharmesh.rathod@algolytix.us">Contact</a>
+  </nav>
+</header>
+</div>
+</div>
+<main id="main">
 
-  <div class="container">
-    <nav>
-      <div class="logo">
-        <img src="falcon_mark.svg" alt="Algolytix falcon" width="46" height="43">
-        <div class="logo-wordmark"><span class="white">ALGOLYT</span><span class="cyan">\X</span></div>
-      </div>
-      <a class="nav-email" href="mailto:dharmesh.rathod@algolytix.us">dharmesh.rathod@algolytix.us</a>
-    </nav>
-
-    <section class="hero">
-      <div class="hero-badge"><span class="dot"></span>Applied AI &middot; Wisconsin, USA</div>
-      <div class="hero-logo"><span class="white">ALGOLYT</span><span class="cyan">\X</span></div>
-      <div class="hero-tagline">HEALTHCARE AI <span class="amber-dot">&#9679;</span> ENTERPRISE AI <span class="amber-dot">&#9679;</span> FORECASTING</div>
-      <p class="hero-sub">Production AI and forecasting systems that help organizations see problems coming and act early.</p>
-    </section>
-
-    <section class="duo" id="projects">
-      <div class="feature-card">
-        <div class="kicker">// HEALTHCARE AI</div>
-        <div class="feature-head"><h2>Nurselytix</h2><span class="pill cyan">IN DEVELOPMENT</span></div>
-        <p class="feature-lead">Early warning of nurse staffing shortfalls for nursing homes, weeks ahead, so administrators cover gaps with their own staff instead of last-minute agency nurses.</p>
-        <ul>
-          <li>Flags where and when a facility will run short, 1 to 4 weeks out</li>
-          <li>Built on CMS staffing data for every US nursing home</li>
-          <li>Baseline models on Wisconsin data, 2019 to 2026</li>
-          <li>Seeking research and facility partners for a Wisconsin pilot</li>
-        </ul>
-        <div class="btn-row">
-          <a href="mailto:dharmesh.rathod@algolytix.us?subject=Nurselytix" class="card-btn cyan">Partner with us
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <a href="nurselytix-concept.html" class="card-btn ghost">See product concept</a>
-        </div>
-      </div>
-      <div class="feature-card amber">
-        <div class="kicker">// QUANTITATIVE RESEARCH</div>
-        <div class="feature-head"><h2>Falcon Desk</h2><span class="pill">PLATFORM</span></div>
-        <p class="feature-lead">Our quantitative research platform: machine learning on market data, built with the same validation discipline we bring to every model.</p>
-        <ul>
-          <li>Multi-instrument research and signal modeling</li>
-          <li>ML models with rigorous backtesting and risk controls</li>
-          <li>Real-time monitoring and analytics dashboard</li>
-          <li>Access for authorized users</li>
-        </ul>
-        <a href="https://app.algolytix.us" class="card-btn amber">&#x1F985; Login to Falcon Desk</a>
-      </div>
-    </section>
-
-    <section class="pipeline">
-      <div class="feature-card slim">
-        <div class="slim-left">
-          <div class="kicker">// METABOLIC HEALTH AI</div>
-          <div class="feature-head"><h2>Glycodynix</h2><span class="pill violet">RESEARCH STAGE</span></div>
-        </div>
-        <p class="feature-lead">Snap a photo of a meal for an AI estimate of its nutrition, then see how it actually moved your glucose on a continuous glucose monitor, with suggestions for better-balanced choices. Built for people with prediabetes and type 2 diabetes. Wellness and education focus; not a medical device.</p>
-      </div>
-    </section>
-
-    <section class="capabilities">
-      <div class="section-label">// What we do</div>
-      <h2>Production AI, built to be used.</h2>
-      <div class="cap-grid">
-        <div class="cap-card">
-          <div class="cap-icon cyan">&#x1FA7A;</div>
-          <h3>Healthcare AI</h3>
-          <p>Forecasting and decision-support tools for care delivery operations, built on public health data and designed for the people who run facilities day to day.</p>
-          <div class="cap-tags"><span class="cap-tag">CMS Data</span><span class="cap-tag">Workforce Analytics</span><span class="cap-tag">Forecasting</span></div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon amber">&#x1f9e0;</div>
-          <h3>Enterprise AI Systems</h3>
-          <p>Production-grade applications on frontier models: document intelligence, agentic workflows and automation, designed for reliability, security and real adoption.</p>
-          <div class="cap-tags"><span class="cap-tag">LLMs</span><span class="cap-tag">Agentic Systems</span><span class="cap-tag">MCP</span><span class="cap-tag">NLP</span></div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon cyan">&#x2699;&#xFE0F;</div>
-          <h3>Forecasting &amp; ML Infrastructure</h3>
-          <p>End-to-end pipelines from data engineering to deployed models, with time-series forecasting, rigorous backtesting and monitoring in production.</p>
-          <div class="cap-tags"><span class="cap-tag">Python</span><span class="cap-tag">LightGBM</span><span class="cap-tag">PyTorch</span><span class="cap-tag">Azure</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="duo bottom">
-      <div class="feature-card">
-        <div class="kicker">// FOUNDER</div>
-        <h2>Dharmesh Rathod</h2>
-        <div class="founder-role">FOUNDER, ALGOLYTIX LLC</div>
-        <p class="feature-lead">26+ years building enterprise technology and AI systems, with experience at Microsoft, GE Healthcare, Chevron, Kohl's and BNY Mellon.</p>
-        <ul>
-          <li>AI architect leading production AI initiatives</li>
-          <li>B.E. Computer Science (SVNIT) and MCA (SG University), India; MBA in Finance and Data Analytics (University of Wisconsin-Parkside)</li>
-          <li>Microsoft Certified Solutions Expert (Data Management and Analytics) and Solutions Associate (Machine Learning); TOGAF 9 and PMP certified</li>
-        </ul>
-        <a href="#projects" class="card-btn cyan">View our projects
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
-      </div>
-      <div class="feature-card amber">
-        <div class="kicker">// LET'S TALK</div>
-        <h2>Partner with us</h2>
-        <div class="founder-role amber-role">GERMANTOWN, WISCONSIN</div>
-        <p class="feature-lead">We welcome conversations with care providers, researchers and organizations who want AI that solves a real operational problem.</p>
-        <ul>
-          <li>Nursing homes interested in a Nurselytix pilot</li>
-          <li>Research and academic collaborators</li>
-          <li>Enterprise AI and forecasting engagements</li>
-        </ul>
-        <a href="mailto:dharmesh.rathod@algolytix.us" class="card-btn amber">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          dharmesh.rathod@algolytix.us</a>
-      </div>
-    </section>
-
-    <footer>
-      <span>&copy; 2026 Algolytix LLC &middot; Germantown, Wisconsin</span>
-      <span class="footer-links"><a href="https://app.algolytix.us">Client login</a></span>
-    </footer>
+<section class="hero">
+  <div class="frame row">
+    <div>
+      <h1>Forecasts for problems that build slowly and arrive all at once.</h1>
+      <p class="lead">Algolytix is a small applied-AI company in Germantown, Wisconsin. We build forecasting tools that give people weeks of warning instead of hours, for healthcare operations and the businesses that depend on seeing trouble early.</p>
+    </div>
+    <aside class="howwe" aria-labelledby="how">
+      <h2 id="how">How we work</h2>
+      <dl>
+        <div><dt>Test on unseen data</dt><dd>Every accuracy figure we publish comes from later time periods held out of training.</dd></div>
+        <div><dt>Start with public data</dt><dd>Where public records exist, our models start there, before a customer shares a single file.</dd></div>
+        <div><dt>Say what we do not know yet</dt><dd>Demo screens are labeled as demo. Pilot results get reported when we have them.</dd></div>
+      </dl>
+    </aside>
   </div>
+</section>
+
+<div class="frame">
+<section class="block" aria-labelledby="work">
+  <div class="row block-head">
+    <h2 id="work">What we are building</h2>
+    <p class="note">Status is stated plainly. Nothing below is a customer result.</p>
+  </div>
+  <ul class="products">
+    <li class="product">
+      <img class="mark" src="nurselytix_mark.svg" alt="" width="64" height="64">
+      <h3><span class="sr">Nurselytix</span><span aria-hidden="true">Nurselyt<span class="idot">&#305;</span>x</span></h3>
+      <p class="tagline">Intelligent staffing. Better care.</p>
+      <p class="status"><b>In development</b> &middot; pilot forming in Wisconsin</p>
+      <p>Early warning of nurse staffing shortfalls for nursing homes, 2 to 4 weeks ahead, so directors of nursing can cover gaps with their own staff before agency labor is the only option.</p>
+      <a class="more" href="nurselytix.html">How Nurselytix works</a>
+    </li>
+    <li class="product">
+      <img class="mark" src="glycodynix_mark.svg" alt="" width="64" height="64">
+      <h3><span class="sr">Glycodynix</span><span aria-hidden="true">Glycodyn<span class="idot green">&#305;</span>x</span></h3>
+      <p class="tagline">Smarter meals. Steadier glucose.</p>
+      <p class="status"><b>Private beta</b> &middot; open to pilots</p>
+      <p>Metabolic health AI for people managing prediabetes and type 2 diabetes, built around the meals they actually eat. Wellness and education, not a medical device. More to share soon.</p>
+    </li>
+    <li class="product">
+      <img class="mark" src="tractioniq_mark.svg" alt="" width="64" height="64">
+      <h3><span class="sr">TractionIQ</span><span aria-hidden="true">Tract<span class="idot violet">&#305;</span>onIQ</span></h3>
+      <p class="tagline">Find your traction. Win the territory.</p>
+      <p class="status"><b>Prototype</b> &middot; open to pilots</p>
+      <p>Finds and ranks acquisition targets for distribution businesses, territory by territory: market penetration from U.S. Census business data, regional territory views, route clustering and competitive battlecards. First built for tire distribution.</p>
+    </li>
+    <li class="product">
+      <img class="mark" src="falcon_desk_mark.svg" alt="" width="64" height="64">
+      <h3>Falcon Desk</h3>
+      <p class="tagline">Trade with intelligence.</p>
+      <p class="status"><b>Internal platform</b> &middot; authorized users</p>
+      <p>Our in-house quantitative research platform: machine learning on market data, held to the same out-of-sample testing as everything else we build.</p>
+      <a class="more" href="falcon-desk.html">About Falcon Desk</a>
+    </li>
+  </ul>
+</section>
+
+
+<section class="block" aria-labelledby="who">
+  <div class="founder">
+    <div>
+      <h2 id="who" class="name">Dharmesh Rathod</h2>
+      <p class="role">Founder, Algolytix LLC</p>
+      <p class="prose" style="margin-top:1.2rem;color:var(--ink-2)">Twenty-six years building enterprise systems at Microsoft, GE Healthcare, Chevron, Kohl's and BNY Mellon, and today an AI architect leading production AI work. Algolytix is where that experience goes into problems worth solving outside the enterprise.</p>
+      <div class="actions"><a class="btn quiet" href="about.html">More about Algolytix</a></div>
+    </div>
+    <ul class="creds">
+      <li>B.E. Computer Science, SVNIT; MCA, SG University; MBA in Finance and Data Analytics, University of Wisconsin-Parkside</li>
+      <li>Microsoft Certified Solutions Expert, Data Management and Analytics; Solutions Associate, Machine Learning</li>
+      <li>TOGAF 9 and PMP certified</li>
+    </ul>
+  </div>
+</section>
+</div>
+</main>
+<div class="frame">
+<footer class="foot">
+  <div>
+    <p class="big">Working on something that should come with more warning? <a href="mailto:dharmesh.rathod@algolytix.us">Write to us.</a></p>
+    <small>Algolytix LLC, Germantown, Wisconsin. dharmesh.rathod@algolytix.us</small>
+  </div>
+  <nav aria-label="Footer">
+    <a href="nurselytix.html">Nurselytix</a>
+    <a href="about.html">About</a>
+    <a href="https://app.algolytix.us">Client sign-in</a>
+  </nav>
+</footer>
+</div>
 </body>
 </html>
