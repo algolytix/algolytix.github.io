@@ -271,7 +271,7 @@ figure { margin: 0; }
 /* brand name: amber dot over the i in Nurselytix */
 .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .idot { position: relative; display: inline-block; line-height: 1.2; }
-.idot::after { content: ""; position: absolute; left: 50%; top: var(--idot-top, 0.09em); width: 0.22em; height: 0.22em; border-radius: 50%; background: var(--amber); transform: translateX(-50%); }
+.idot::after { content: ""; position: absolute; left: 50%; top: var(--idot-top, 0.1em); width: 0.15em; height: 0.15em; border-radius: 0; background: var(--amber); transform: translateX(-50%); }
 .idot.green::after { background: #22C55E; }
 
 /* sticky top bar */
