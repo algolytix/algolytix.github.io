@@ -362,3 +362,8 @@ figure { margin: 0; }
 .brand-word .sq::after { content: ""; position: absolute; left: calc(50% - 0.04em); top: 0.06em; width: 0.14em; height: 0.14em; background: #03A6E7; transform: translateX(-50%); }
 .careers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 900px) { .careers-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- 30-second film ---------- */
+.adfilm { margin: 0; }
+.adfilm video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 14px; background: #14213D; box-shadow: 0 12px 32px rgba(20,33,61,.18); }
+@media (prefers-reduced-motion: reduce) { .adfilm video { animation: none; } }
