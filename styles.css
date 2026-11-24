@@ -367,3 +367,9 @@ figure { margin: 0; }
 .adfilm { margin: 0; }
 .adfilm video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 14px; background: #14213D; box-shadow: 0 12px 32px rgba(20,33,61,.18); }
 @media (prefers-reduced-motion: reduce) { .adfilm video { animation: none; } }
+
+.hero .row.hero-film { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; column-gap: clamp(24px, 4vw, 56px); }
+.hero-film .note { margin-top: 1.2rem; }
+.adfilm figcaption { font-size: 0.78rem; line-height: 1.45; color: var(--ink-3); margin-top: 0.55rem; text-align: left; }
+.ladder { margin-top: clamp(18px, 2.2vw, 30px); }
+@media (max-width: 900px) { .hero .row.hero-film { grid-template-columns: minmax(0, 1fr); } .hero-film .adfilm { margin-top: 1.2rem; } }
